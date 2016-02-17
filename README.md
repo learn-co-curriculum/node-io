@@ -2,9 +2,9 @@
 
 ## Overview
 
-Have you ever waited for a website to load and it was very slow? Of course you have! Almost of us experienced it at some point. The website was blocked by your request (e.g., your form submission) and you couldn't do anything on this particular browser tab/window (that's why some people prefer to keep multiple open tabs). 
+Have you ever waited for a website to load and it was very slow? Of course you have! Almost all of us have experienced that at some point. The website was blocked by your request (e.g., your form submission) and you couldn't do anything on this particular browser tab/window (that's why some people prefer to keep multiple open tabs). 
 
-One of the major selling point (a.k.a. benefits) of Node is it's non-blocking I/O which is powered by asynchronous code. Writing asynchronous code in JavaScript is straightforward, but for developers coming from other languages it can pose a challenge. If you are one of them, then you need to change your thinking a bit to understand asynchronous code.
+One of the major selling points of Node is it's non-blocking I/O which is powered by asynchronous code. Writing asynchronous code in JavaScript is straightforward, but for developers coming from other languages it can pose a challenge. If you are one of them, then you need to change your thinking a bit to understand asynchronous code.
 
 This lesson will cover the differences between synchronous and asynchronous code.
 
@@ -24,7 +24,7 @@ sleep(1)
 puts "step 2"
 ```
 
-To run the file from this repository, execute `$ ruby sleep.rb`. You will see `"step 1"`, then the program will wait one second and you'll see `"step 2"`. So far so good. That's how synchronous code works because during the sleep method, nothing else is running. 
+To run the file from this repository, execute `ruby sleep.rb`. You will see `"step 1"`, then the program will wait one second and you'll see `"step 2"`. So far so good. That's how synchronous code works because during the sleep method, nothing else is running. 
 
 On the contrary, in JavaScript and Node we can schedule some logic in the future (in a callback) and our program will be able to run something else while waiting for this future date/time. Look at this code with a `setTimeout()` which will output the same two lines as the Ruby code (second line with a 1 second delay):
 
@@ -45,13 +45,14 @@ setTimeout(function(){
 console.log('step 1.5?')
 ```
 
-The snippet above is in the `sleep.js` file. You can run it with `$ node sleep.js`. It will result in `"step 1"`, `"step 1.5"`, 1-second wait and then `"step 2"`. 
+The snippet above is in the `sleep.js` file. You can run it with `node sleep.js`. It will result in `"step 1"`, `"step 1.5"`, 1-second wait and then `"step 2"`. 
 
-A callback is just a function. Often we define this function anonymously right in the other function's (like `setTimeout()`) call, meaning our callback doesn't have a name (example above), but nothing prevent us from declaring a named function or a variable which value is function and then using that name.
+A callback is just a function. Often we define this function anonymously right in the other function's (like `setTimeout()`) call, meaning our callback doesn't have a name (example above), but nothing prevents us from declaring a named function or a variable which value is function and then using that name.
 
 The reason why we're using `setTimeout()` is because it emulates time-intensive input/output operations where you don't have the results immediately and you still want your system to be functioning and doing something else while waiting (non-blocking I/O). For example, instead of `setTimeout()`, you would have a function to read from a file, or a database driver method to read from a database.
 
 But what if we don't want to delay the program by one second or even one millisecond and we still want to postpone some action? Who wants to wait?! Time is money. ;)
+
 Going back to our neat example, the problem is that we need `"step 2"` to be printed after `"step 1.5"`, but without the wait. Can't we just say timeout is 0 milliseconds? The answer is yes.
 
 ```js

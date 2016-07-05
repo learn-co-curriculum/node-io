@@ -67,7 +67,7 @@ The reason why 0 milliseconds will print step 2 after step 1.5  is that `setTime
 
 By running the code (file `sleep0.js`), you'll see `"step 1"`, `"step 1.5"` and `"step 2"` all at once, but in our code we wrote the `"step 2"` statement before `"step 1.5"` in the code. Most languages can't do that (execute code written on a later line before code written earlier on). What actually happened was that `setTimeout()` schedule the callback (`"step 2")` and the next cycle of the event loop picked it up. 
 
-Event loop? Think about it as a huge loop like a `for` of `while` loop that runs and constantly looks for things to execute. So event loop finished the cycle on `"step 1.5"` and went back to the top, found `"step 2"` and the time was 0 so it executed that line right away.
+Event loop? Think about it as a huge loop like a `for` or `while` loop that runs and constantly looks for things to execute. So event loop finished the cycle on `"step 1.5"` and went back to the top, found `"step 2"` and the time was 0 so it executed that line right away.
 
 Most of the time, we don't have control on when the input/output callback will come back so we need to code the logic accordingly using asynchronous functions (which rely on event loop under the hood).
 
@@ -143,3 +143,5 @@ Now you know the basics of Node I/O and how asynchronous code works. We'll cover
 
 <a href='https://learn.co/lessons/node-io' data-visibility='hidden'>View this lesson on Learn.co</a>
 
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/node-io'>Basic Node I/O</a> on Learn.co and start learning to code for free.</p>
